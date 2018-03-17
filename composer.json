@@ -1,0 +1,15 @@
+{
+    "name": "webzzmaster/wfirmasdk",
+    "autoload": {
+        "psr-0" : {
+            "Webzzmaster\\WFirmaSDK" : "src"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "7"
+    },
+    "require": {
+        "guzzlehttp/guzzle-services": "^1.1",
+        "symfony/yaml": "4.0"      
+    }
+}
