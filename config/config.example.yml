@@ -1,0 +1,8 @@
+webzzmaster:
+    wfirmasdk:
+        url: https://api2.wfirma.pl/
+        authentication: basic|oauth
+        login: YourLoginToTheSystem
+        password: YourPasswordToTheSystem
+        consumer_key: YourConsumerKey
+        consumer_secret: YourConsumerSecret
