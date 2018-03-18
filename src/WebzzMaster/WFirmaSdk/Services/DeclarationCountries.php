@@ -1,6 +1,6 @@
 <?php
 
-namespace WebzzMaster\WFirmaSDK\Services;
+namespace WebzzMaster\WFirmaSdk\Services;
 
 /**
  * Description of DeclarationCountries

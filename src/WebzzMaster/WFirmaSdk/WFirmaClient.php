@@ -1,9 +1,10 @@
 <?php
 namespace WebzzMaster\WFirmaSdk;
 
+use Exception;
 use Symfony\Component\Yaml\Yaml;
 use WebzzMaster\WFirmaSdk\Components\ConfigParser;
-use WebzzMaster\WFirmaSDK\Services\{
+use WebzzMaster\WFirmaSdk\Services\{
     Companies,
     CompanyAccounts,
     CompanyPacks,
@@ -40,7 +41,7 @@ use WebzzMaster\WFirmaSDK\Services\{
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class Client
+class WFirmaClient
 {
     /**
      * @var ConfigParser
@@ -55,18 +56,20 @@ class Client
         
         $this->configParser = new ConfigParser();
         $this->configParser->parse(Yaml::parseFile($configFile));
-        
-        if (!isset($parsedYamlConfig['webzzmaster']['wfirmasdk'])) {
-            throw new Exception("wFirmaSDK is not properly configured - missing WebzzMaster\WFirmaSdk config path");
-        }
-
-        $this->service = new $parsedYamlConfig['microservices'][$microservice]['class']($parsedYamlConfig, $authToken);
     }
-
-    private function setConfig($parsedYamlConfig)
+    
+    public function __call(string $name, array $arguments)
     {
-        if (!isset($parsedYamlConfig['webzzmaster']['wfirmasdk'])) {
-            throw new Exception("wFirmaSDK is not properly configured - missing WebzzMaster\WFirmaSdk config path");
+        $moduleName = 'WebzzMaster\\WFirmaSdk\\Services\\'.str_replace('_', '', ucwords($name, '_'));
+        
+        if(!class_exists($moduleName)){
+            throw new Exception("wFirmaSDK: Module ".$moduleName." does not exist");
         }
+        
+        if (!property_exists($this, $name)) {
+            $this->$name = new $moduleName($this->configParser);
+        }
+        
+        return $this->$name;
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace WebzzMaster\WFirmaSDK\Services;
+namespace WebzzMaster\WFirmaSdk\Services;
 
 /**
  * Description of Companies
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class Companies
+class Companies extends BaseService
 {
     //put your code here
 }

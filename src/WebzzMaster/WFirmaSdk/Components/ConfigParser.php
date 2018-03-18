@@ -34,6 +34,60 @@ class ConfigParser
             $message .= $violation->getMessage() . '; ';
         }
     }
+    
+    public function parse(array $config)
+    {
+        if (!isset($config['webzzmaster']['wfirmasdk'])) {
+            throw new Exception(
+                "wFirmaSDK is not properly configured: missing configurations keys"
+            );
+        }
+        
+        if (!isset($config['webzzmaster']['wfirmasdk']['url'])) {
+            throw new Exception(
+                "wFirmaSDK is not properly configured: missing configurations key: url"
+            );
+        }        
+        $this->setApiUrl($config['webzzmaster']['wfirmasdk']['url']);
+        
+        if (!isset($config['webzzmaster']['wfirmasdk']['authentication'])) {
+            throw new Exception(
+                "wFirmaSDK is not properly configured: missing configurations key: authentication"
+            );
+        }        
+        $this->setAuthentication($config['webzzmaster']['wfirmasdk']['authentication']);
+        
+        if($config['webzzmaster']['wfirmasdk']['authentication'] === 'basic'){
+            if (!isset($config['webzzmaster']['wfirmasdk']['login'])) {
+                throw new Exception(
+                    "wFirmaSDK is not properly configured: missing configurations key: login"
+                );
+            }
+            
+            if (!isset($config['webzzmaster']['wfirmasdk']['password'])) {
+                throw new Exception(
+                    "wFirmaSDK is not properly configured: missing configurations key: password"
+                );
+            }
+            $this->setUsername($config['webzzmaster']['wfirmasdk']['login']);
+            $this->setPassword($config['webzzmaster']['wfirmasdk']['password']);
+        }
+        
+        if($config['webzzmaster']['wfirmasdk']['authentication'] === 'oauth'){
+            if (!isset($config['webzzmaster']['wfirmasdk']['consumer_key'])) {
+                throw new Exception(
+                    "wFirmaSDK is not properly configured: missing configurations key: consumer_key"
+                );
+            }
+            
+            if (!isset($config['webzzmaster']['wfirmasdk']['consumer_secret'])) {
+                throw new Exception(
+                    "wFirmaSDK is not properly configured: missing configurations key: consumer_secret"
+                );
+            }
+        }
+        
+    }
 
     public function setApiUrl(string $url)
     {
@@ -97,6 +151,12 @@ class ConfigParser
         if (0 !== count($violations)) {
             throw new Exception(
                 "wFirmaSDK is not properly configured - ".$this->generateViolationsMessage($violations)
+            );
+        }
+        
+        if($authentication === 'oauth'){
+            throw new Exception(
+                "wFirmaSDK: oAuth method will be available in future version"
             );
         }
     }
