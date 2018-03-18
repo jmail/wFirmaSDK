@@ -39,7 +39,7 @@ class ConfigParser
     {
         if (!isset($config['webzzmaster']['wfirmasdk']['url'])) {
             throw new Exception(
-            "wFirmaSDK is not properly configured: missing configurations key: url"
+                "wFirmaSDK is not properly configured: missing configurations key: url"
             );
         }
         $this->setApiUrl($config['webzzmaster']['wfirmasdk']['url']);
@@ -49,7 +49,7 @@ class ConfigParser
     {
         if (!isset($config['webzzmaster']['wfirmasdk']['authentication'])) {
             throw new Exception(
-            "wFirmaSDK is not properly configured: missing configurations key: authentication"
+                "wFirmaSDK is not properly configured: missing configurations key: authentication"
             );
         }
         $this->setAuthentication($config['webzzmaster']['wfirmasdk']['authentication']);
@@ -59,7 +59,7 @@ class ConfigParser
     {
         if (!isset($config['webzzmaster']['wfirmasdk']['consumer_key'])) {
             throw new Exception(
-            "wFirmaSDK is not properly configured: missing configurations key: consumer_key"
+                "wFirmaSDK is not properly configured: missing configurations key: consumer_key"
             );
         }
         $this->setConsumerKey($config['webzzmaster']['wfirmasdk']['consumer_key']);
@@ -69,7 +69,7 @@ class ConfigParser
     {
         if (!isset($config['webzzmaster']['wfirmasdk']['consumer_secret'])) {
             throw new Exception(
-            "wFirmaSDK is not properly configured: missing configurations key: consumer_secret"
+                "wFirmaSDK is not properly configured: missing configurations key: consumer_secret"
             );
         }
         $this->setConsumerSecret($config['webzzmaster']['wfirmasdk']['consumer_secret']);
@@ -79,7 +79,7 @@ class ConfigParser
     {
         if (!isset($config['webzzmaster']['wfirmasdk']['password'])) {
             throw new Exception(
-            "wFirmaSDK is not properly configured: missing configurations key: password"
+                "wFirmaSDK is not properly configured: missing configurations key: password"
             );
         }
         $this->setPassword($config['webzzmaster']['wfirmasdk']['password']);
@@ -89,7 +89,7 @@ class ConfigParser
     {
         if (!isset($config['webzzmaster']['wfirmasdk']['login'])) {
             throw new Exception(
-            "wFirmaSDK is not properly configured: missing configurations key: login"
+                "wFirmaSDK is not properly configured: missing configurations key: login"
             );
         }
         $this->setUsername($config['webzzmaster']['wfirmasdk']['login']);
@@ -129,7 +129,7 @@ class ConfigParser
     {
         if (!isset($config['webzzmaster']['wfirmasdk'])) {
             throw new Exception(
-            "wFirmaSDK is not properly configured: missing configurations keys"
+                "wFirmaSDK is not properly configured: missing configurations keys"
             );
         }
 
@@ -151,15 +151,16 @@ class ConfigParser
     public function setApiUrl(string $url)
     {
         $violations = $this->validator->validate(
-            $url, [
-            new Url(),
-            new NotBlank(),
+            $url,
+            [
+                new Url(),
+                new NotBlank(),
             ]
         );
 
         if (0 !== count($violations)) {
             throw new Exception(
-            "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
+                "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
             );
         }
     }
@@ -167,21 +168,22 @@ class ConfigParser
     public function setAuthentication(string $authentication)
     {
         $violations = $this->validator->validate(
-            $authentication, [
-            new Choice(['basic', 'oauth']),
-            new NotBlank(),
+            $authentication,
+            [
+                new Choice(['basic', 'oauth']),
+                new NotBlank(),
             ]
         );
 
         if (0 !== count($violations)) {
             throw new Exception(
-            "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
+                "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
             );
         }
 
         if ($authentication === 'oauth') {
             throw new Exception(
-            "wFirmaSDK: oAuth method will be available in future version"
+                "wFirmaSDK: oAuth method will be available in future version"
             );
         }
     }
@@ -189,14 +191,15 @@ class ConfigParser
     public function setConsumerKey(string $consumerKey)
     {
         $violations = $this->validator->validate(
-            $consumerKey, [
-            new NotBlank(),
+            $consumerKey,
+            [
+                new NotBlank(),
             ]
         );
 
         if (0 !== count($violations)) {
             throw new Exception(
-            "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
+                "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
             );
         }
     }
@@ -204,14 +207,15 @@ class ConfigParser
     public function setConsumerSecret(string $consumerSecret)
     {
         $violations = $this->validator->validate(
-            $consumerSecret, [
-            new NotBlank(),
+            $consumerSecret,
+            [
+                new NotBlank(),
             ]
         );
 
         if (0 !== count($violations)) {
             throw new Exception(
-            "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
+                "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
             );
         }
     }
@@ -219,14 +223,15 @@ class ConfigParser
     public function setPassword(string $password)
     {
         $violations = $this->validator->validate(
-            $password, [
-            new NotBlank(),
+            $password,
+            [
+                new NotBlank(),
             ]
         );
 
         if (0 !== count($violations)) {
             throw new Exception(
-            "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
+                "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
             );
         }
     }
@@ -234,14 +239,15 @@ class ConfigParser
     public function setUsername(string $username)
     {
         $violations = $this->validator->validate(
-            $username, [
-            new NotBlank(),
+            $username,
+            [
+                new NotBlank(),
             ]
         );
 
         if (0 !== count($violations)) {
             throw new Exception(
-            "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
+                "wFirmaSDK is not properly configured - " . $this->generateViolationsMessage($violations)
             );
         }
     }
