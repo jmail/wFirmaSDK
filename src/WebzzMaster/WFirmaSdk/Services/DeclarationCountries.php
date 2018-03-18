@@ -7,7 +7,7 @@ namespace WebzzMaster\WFirmaSdk\Services;
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class DeclarationCountries
+class DeclarationCountries extends BaseService
 {
     //put your code here
 }

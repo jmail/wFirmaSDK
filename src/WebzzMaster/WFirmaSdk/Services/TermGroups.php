@@ -7,7 +7,7 @@ namespace WebzzMaster\WFirmaSdk\Services;
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class TermGroups
+class TermGroups extends BaseService
 {
     //put your code here
 }

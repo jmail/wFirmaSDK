@@ -7,7 +7,7 @@ namespace WebzzMaster\WFirmaSdk\Services;
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class PaymentCashboxes
+class PaymentCashboxes extends BaseService
 {
     //put your code here
 }

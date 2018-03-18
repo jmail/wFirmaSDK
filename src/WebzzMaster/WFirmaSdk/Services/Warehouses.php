@@ -7,7 +7,7 @@ namespace WebzzMaster\WFirmaSdk\Services;
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class Warehouses
+class Warehouses extends BaseService
 {
     //put your code here
 }

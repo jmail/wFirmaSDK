@@ -7,7 +7,7 @@ namespace WebzzMaster\WFirmaSdk\Services;
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class Webhooks
+class Webhooks extends BaseService
 {
     //put your code here
 }

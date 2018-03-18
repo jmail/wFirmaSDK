@@ -7,7 +7,7 @@ namespace WebzzMaster\WFirmaSdk\Services;
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class TranslationLanguages
+class TranslationLanguages extends BaseService
 {
     //put your code here
 }

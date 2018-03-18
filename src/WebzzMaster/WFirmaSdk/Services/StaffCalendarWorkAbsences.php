@@ -7,7 +7,7 @@ namespace WebzzMaster\WFirmaSdk\Services;
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class StaffCalendarWorkAbsences
+class StaffCalendarWorkAbsences extends BaseService
 {
     //put your code here
 }

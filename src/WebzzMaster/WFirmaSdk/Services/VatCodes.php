@@ -7,7 +7,7 @@ namespace WebzzMaster\WFirmaSdk\Services;
  *
  * @author jmail <jarek@webzzmaster.com>
  */
-class VatCodes
+class VatCodes extends BaseService
 {
     //put your code here
 }
