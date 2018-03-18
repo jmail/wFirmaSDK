@@ -145,6 +145,7 @@ class ConfigParser
             
         }
         
+        return true;
     }
     
     public function setApiUrl(string $url)
