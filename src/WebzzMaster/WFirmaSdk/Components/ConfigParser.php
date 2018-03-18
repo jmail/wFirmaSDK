@@ -142,7 +142,6 @@ class ConfigParser
         }
 
         if ($config['webzzmaster']['wfirmasdk']['authentication'] === 'oauth') {
-            
         }
 
         return true;

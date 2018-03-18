@@ -50,10 +50,10 @@ class WFirmaClient
 
     public function __construct(string $configFile = __DIR__ . '/../../../config/config.yml')
     {
-        if(!file_exists($configFile)){
+        if (!file_exists($configFile)) {
             throw new Exception("wFirmaSDK is not properly configured - missing configuration file");
         }
-        
+
         $this->configParser = new ConfigParser();
         $this->configParser->parse(Yaml::parseFile($configFile));
     }
@@ -62,10 +62,10 @@ class WFirmaClient
     {
         $moduleName = 'WebzzMaster\\WFirmaSdk\\Services\\'.str_replace('_', '', ucwords($name, '_'));
         
-        if(!class_exists($moduleName)){
-            throw new Exception("wFirmaSDK: Module ".$moduleName." does not exist");
+        if (!class_exists($moduleName)) {
+            throw new Exception("wFirmaSDK: Module " . $moduleName . " does not exist");
         }
-        
+
         if (!property_exists($this, $name)) {
             $this->$name = new $moduleName($this->configParser);
         }
