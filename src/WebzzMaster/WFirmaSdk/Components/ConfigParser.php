@@ -1,6 +1,7 @@
 <?php
 namespace WebzzMaster\WFirmaSdk\Components;
 
+use Exception;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\NotBlank;
