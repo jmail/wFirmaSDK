@@ -2,20 +2,13 @@
 
 namespace Tests;
 
-use Exception;
 use PHPUnit\Framework\TestCase;
 use WebzzMaster\WFirmaSdk\WFirmaClient;
-
 
 class ConfigFileTest extends TestCase
 {
     private $client;
     
-    public function setUp()
-    {
-        
-    }
-
     public function testNotExistingFile()
     {
         $this->expectExceptionMessage("wFirmaSDK is not properly configured - missing configuration file");
@@ -36,7 +29,9 @@ class ConfigFileTest extends TestCase
     
     public function testNotExistingAuthneticationKeyInFile()
     {
-        $this->expectExceptionMessage("wFirmaSDK is not properly configured: missing configurations key: authentication");
+        $this->expectExceptionMessage(
+            "wFirmaSDK is not properly configured: missing configurations key: authentication"
+        );
         $this->client = new WFirmaClient(__DIR__.'/../config/config_missing_key_2.yml');
     }
     
