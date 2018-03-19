@@ -2,7 +2,12 @@
     "name": "webzzmaster/wfirmasdk",
     "autoload": {
         "psr-0" : {
-            "Webzzmaster\\WFirmaSDK" : "src"
+            "WebzzMaster\\WFirmaSdk" : "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "require-dev": {
@@ -10,6 +15,7 @@
     },
     "require": {
         "guzzlehttp/guzzle-services": "^1.1",
-        "symfony/yaml": "4.0"      
+        "symfony/yaml": "4.0",
+        "symfony/validator": "^4.0"      
     }
 }
